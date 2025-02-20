@@ -13,13 +13,16 @@ def generate_cypher():
     schema = "(:Person)-[:ACTED_IN]->(:Movie)", "(:Person)-[:DIRECTED]->(:Movie)", "(:Person)-[:PRODUCED]->(:Movie)", "(:Person)-[:WROTE]->(:Movie)", "(:Person)-[:REVIEWED]->(:Movie)"
     
     full_prompt = f"""
-    Generate a **Cypher statement** to answer the following question: {question}.
+    Generate a **Cypher MATCH query** to answer the following question: {question}.
     Strictly use only words present in this schema: {schema}.
     Keep the answer **short** and use **only** the relationships provided in the schema: `ACTED_IN`, `DIRECTED`, `PRODUCED`, `WROTE`, `REVIEWED`. 
     Do not introduce other relationships or entities. 
-    Do not use HAS_SKILL or other schema terms outside of the ones provided. 
-    In the Cypher query, find people who acted in a movie specifically titled "The Matrix".
-    Return only the Cypher query without any explanation.
+    The Cypher query **must start with MATCH and contain only the MATCH clause**. No RETURN, WHERE, or other clauses are allowed.
+    **Example format**:
+    MATCH (p:Person)-[r]->(m) RETURN p, r, m LIMIT 10;
+    MATCH (p:Person) RETURN count(p);
+    MATCH (p) RETURN p;
+    Now generate the MATCH query following the rules strictly.
     """
 
     # Generate response using Ollama
@@ -28,7 +31,7 @@ def generate_cypher():
         response = ollama.chat(
             model="hf.co/lakkeo/stable-cypher-instruct-3b:Q8_0",
             messages=[
-                {"role": "system", "content": "Create a Cypher statement to answer the following question."},
+                {"role": "system", "content": "Create a Cypher MATCH query to answer the following question."},
                 {"role": "user", "content": full_prompt}
             ]
         )
@@ -41,5 +44,5 @@ def generate_cypher():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-if name == '__main__':
+if __name__ == '__main__':
     app.run(debug=True)
