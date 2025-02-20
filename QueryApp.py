@@ -18,6 +18,7 @@ st.sidebar.title("Neo4j Connection Settings")
 neo4j_url = st.sidebar.text_input("Neo4j URL", "bolt://localhost:7687")
 neo4j_username = st.sidebar.text_input("Username", "neo4j")
 neo4j_password = st.sidebar.text_input("Password", type="password")
+ollama_model = st.sidebar.text_input("HuggingFace Model", "lakkeo/stable-cypher-instruct-3b")
 
 flask_server_url = "http://127.0.0.1:5000/generate-cypher"  # Update with your Flask server URL
 
@@ -27,7 +28,7 @@ def check_credentials():
 def fetch_cypher_query(user_question):
     """Fetches the Cypher query from the Flask server."""
     try:
-        response = requests.post(flask_server_url, json={"question": user_question})
+        response = requests.post(flask_server_url, json={"question": user_question,"model": ollama_model})
         response_json = response.json()
         return response_json.get("cypher_query", None)
     except Exception as e:
