@@ -1,0 +1,5 @@
+neo4j
+llama-cpp-python
+ollama
+streamlit 
+pyvis
