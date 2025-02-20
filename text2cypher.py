@@ -29,7 +29,7 @@ def generate_cypher():
     try:
         print("Generating response...")
         response = ollama.chat(
-            model="hf.co/lakkeo/stable-cypher-instruct-3b:Q8_0",
+            model="hf.co/lakkeo/stable-cypher-instruct-3b:Q5_K_M",
             messages=[
                 {"role": "system", "content": "Create a Cypher MATCH query to answer the following question."},
                 {"role": "user", "content": full_prompt}
