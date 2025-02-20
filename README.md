@@ -32,7 +32,7 @@
   - Turn on the **Movie Database**.
   - Navigate to **Apps** and start the **Browser**.
   - Open the **Neo4j Browser App**.
-  - Copy the contents of `MoviesDataset.txt` and paste them into the Neo4j Browser.
+  - Copy the contents of `MoviesDataset.txt`, paste them into the Neo4j Browser and Execute it to store those values in the databse.
 
 - Install **Git and Clone the Repository**
   - Ensure Git is installed.
