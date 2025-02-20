@@ -83,3 +83,7 @@
 - This happens because large language models predict responses based on patterns in training data.
 - If a query returns incorrect results, try rephrasing and submitting again.
 
+## ENJOY
+
+![WebApp UI](./images/webAppUI.png)
+
