@@ -38,7 +38,7 @@
   - Ensure Git is installed.
   - Clone the repository:
     ```bash
-    git clone <repo_url>
+    git clone https://github.com/Jitmandal051004/neo4j_chatbot_py.git <repo_folder_name>
     cd <repo_folder>
     ```
 
