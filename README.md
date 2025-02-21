@@ -85,5 +85,12 @@
 
 ## ENJOY
 
+### 📌 WebApp User Interface
 ![WebApp UI](./images/webAppUI.png)
+
+### 📊 Graphical Visualization
+![Graphical Result](./images/GraphicVisual.png)
+
+### 📋 Tabular Representation
+![Tabular Result](./images/tabularView.png)
 
