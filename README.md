@@ -17,7 +17,7 @@
   - The first installation may take some time, but subsequent runs will be faster depending on your hardware specs.
 
 - Install **Neo4j Desktop and Setup Database**
-  - Download the **Neo4j Desktop App Image** from the **Deployment Center**.
+  - Download the **Neo4j Desktop App Image** from the [Deployment Center](https://neo4j.com/deployment-center/#drivers).
   - Select the **Linux App Image** and download it.
   - Navigate to the directory where the file is downloaded:
     ```bash
@@ -43,12 +43,26 @@
     ```
 
 - Set Up the **Conda Environment**
-  - Download the `environment.yml` file.
-  - Create and activate the environment:
-    ```bash
+  - Using Conda (Recommended)
+   - Create and activate the environment:
+     ```bash
     conda env create -f environment.yml
     conda activate <your_env_name>
     ```
+  - Using Python Virtual Environment (venv) 
+   - Create and activate the virtual environment:
+     ```bash
+     python -m venv venv
+     source venv/bin/activate 
+     ```
+   - Install dependencies:
+     ```bash
+     python install -r requirement.txt
+     ```
+  - Additional Notes:
+   - Conda is recommended as it handles package dependencies more efficiently.
+   - If using venv, ensure you have the correct Python version installed.
+  
 
 ## Running the Project
 
