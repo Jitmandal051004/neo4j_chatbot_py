@@ -18,7 +18,7 @@ st.sidebar.title("Neo4j Connection Settings")
 neo4j_url = st.sidebar.text_input("Neo4j URL", "bolt://localhost:7687")
 neo4j_username = st.sidebar.text_input("Username", "neo4j")
 neo4j_password = st.sidebar.text_input("Password", type="password")
-ollama_model = st.sidebar.text_input("HuggingFace Model", "lakkeo/stable-cypher-instruct-3b:Q_K_M")
+ollama_model = st.sidebar.text_input("HuggingFace Model", "hf.co/lakkeo/stable-cypher-instruct-3b:Q5_K_M")
 
 flask_server_url = "http://127.0.0.1:5000/generate-cypher"  # Update with your Flask server URL
 
@@ -110,17 +110,31 @@ if run_query:
             if query_result:
                 records = []
                 column_names = set()
+
                 for record in query_result:
                     row_data = {}
-                    for key, value in record.items():
-                        row_data[key] = value
-                        column_names.add(key)
-                    records.append(row_data)
-                
-                graph = visualize_result(query_result)
-                df = pd.DataFrame(records, columns=list(column_names)) if records else None
-                
+
+                    for item in record:
+                        if isinstance(item, neo4j.graph.Node):
+                            node_labels = list(item.labels)
+                            node_type = node_labels[0] if node_labels else "Unknown"
+                            node_properties = item._properties  # Extract properties
+
+                            row_data["Node Type"] = node_type
+                            row_data.update(node_properties)  # Add all node properties
+
+                        elif isinstance(item, neo4j.graph.Relationship):
+                            row_data["Relationship"] = item.type
+                            row_data["Start Node"] = item.start_node.get("name", item.start_node.get("title", "Unknown"))
+                            row_data["End Node"] = item.end_node.get("name", item.end_node.get("title", "Unknown"))
+
+                    if row_data:
+                        records.append(row_data)
+
+                df = pd.DataFrame(records) if records else None
+
                 st.subheader("Graph Visualization")
+                graph = visualize_result(query_result)
                 if graph:
                     graph_path = save_and_display_pyvis(graph)
                     with open(graph_path, "r", encoding="utf-8") as f:
@@ -128,7 +142,7 @@ if run_query:
                     st.components.v1.html(html_content, height=700, scrolling=True)
                 else:
                     st.write("Graph Visualization Not Possible")
-                
+
                 if df is not None and not df.empty:
                     st.subheader("Query Result")
                     st.dataframe(df, use_container_width=True)
@@ -136,3 +150,4 @@ if run_query:
                     st.error("No results found. Try a different query.")
         else:
             st.error("Failed to generate a Cypher query. Try again.")
+
