@@ -19,16 +19,16 @@ def generate_cypher():
     examples = """
     Example Queries:
     1. Movies between 1990-2000 with >5000 votes:
-       MATCH (m:Movie) WHERE m.released >= 1990 AND m.released <= 2000 AND m.votes > 5000 RETURN m;
+        MATCH (m:Movie) WHERE m.released >= 1990 AND m.released <= 2000 AND m.votes > 5000 RETURN m;
 
     2. Movie with highest budget:
-       MATCH (m:Movie) RETURN m ORDER BY m.budget DESC LIMIT 1;
+        MATCH (m:Movie) RETURN m ORDER BY m.budget DESC LIMIT 1;
 
     3. Top 5 actors with most roles before 1980:
-       MATCH (a:Actor)-[r:ACTED_IN]->(m:Movie) WHERE m.year < 1980 RETURN a, r, m LIMIT 5;
-       
+        MATCH (a:Actor)-[r:ACTED_IN]->(m:Movie) WHERE m.year < 1980 RETURN a, r, m LIMIT 5;
+
     4. Give me Person who acted in movies and their relation:
-    	MATCH (a:Actor)-[r:ACTED_IN]->(m:Movie) WHERE a, r, m
+        MATCH (a:Actor)-[r:ACTED_IN]->(m:Movie) WHERE a, r, m
     """
 
     full_prompt = f"""

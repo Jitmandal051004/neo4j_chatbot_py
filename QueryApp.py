@@ -18,7 +18,7 @@ st.sidebar.title("Neo4j Connection Settings")
 neo4j_url = st.sidebar.text_input("Neo4j URL", "bolt://localhost:7687")
 neo4j_username = st.sidebar.text_input("Username", "neo4j")
 neo4j_password = st.sidebar.text_input("Password", type="password")
-ollama_model = st.sidebar.text_input("HuggingFace Model", "hf.co/lakkeo/stable-cypher-instruct-3b:Q5_K_M")
+ollama_model = st.sidebar.text_input("HuggingFace Model", "hf.co/lakkeo/stable-cypher-instruct-3b:Q8_0")
 
 flask_server_url = "http://127.0.0.1:5000/generate-cypher"  # Update with your Flask server URL
 

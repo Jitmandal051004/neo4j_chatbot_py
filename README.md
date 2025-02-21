@@ -11,7 +11,7 @@
   - Install Ollama from [Ollama](https://ollama.ai/).
   - Search for `lakkeo/stable-cypher-instruct-3b` on **Hugging Face**.
   - Click **Use this model** and select **Ollama**.
-  - Choose the above-mentioned model.
+  - Choose either Q5_K_M or Q8_0 (**NOTE** - Q8_0 less hallucinates and has higher accuracy and I would not recommend to go to higher model as it needs more compute).
   - Copy the command shown (e.g., `ollama run hf.co/lakkeo/stable-cypher-instruct-3b:Q8_0`).
   - Open the terminal and run the copied command.
   - The first installation may take some time, but subsequent runs will be faster depending on your hardware specs.
@@ -41,6 +41,7 @@
     git clone https://github.com/Jitmandal051004/neo4j_chatbot_py.git <repo_folder_name>
     cd <repo_folder>
     ```
+  - After cloning you can remove the **./images** folder
 
 - Set Up the **Conda Environment**
   - Using Conda (Recommended)
@@ -107,4 +108,7 @@
 
 ### 📋 Tabular Representation
 ![Tabular Result](./images/tabularView.png)
+
+### Q8_0 model result
+![Q8_0 Result](./images/Q8_0res2.png)
 
