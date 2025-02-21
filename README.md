@@ -44,24 +44,24 @@
 
 - Set Up the **Conda Environment**
   - Using Conda (Recommended)
-   - Create and activate the environment:
-     ```bash
-    conda env create -f environment.yml
-    conda activate <your_env_name>
-    ```
+    - Create and activate the environment:
+      ```bash
+      conda env create -f environment.yml
+      conda activate <your_env_name>
+      ```
   - Using Python Virtual Environment (venv) 
-   - Create and activate the virtual environment:
-     ```bash
-     python -m venv venv
-     source venv/bin/activate 
-     ```
-   - Install dependencies:
-     ```bash
-     python install -r requirement.txt
-     ```
+    - Create and activate the virtual environment:
+      ```bash
+      python -m venv venv
+      source venv/bin/activate 
+      ```
+    - Install dependencies:
+      ```bash
+      python install -r requirement.txt
+      ```
   - Additional Notes:
-   - Conda is recommended as it handles package dependencies more efficiently.
-   - If using venv, ensure you have the correct Python version installed.
+    - Conda is recommended as it handles package dependencies more efficiently.
+    - If using venv, ensure you have the correct Python version installed.
   
 
 ## Running the Project
