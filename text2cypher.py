@@ -14,7 +14,12 @@ def generate_cypher():
 
     print("Using model:", model)
 
-    schema = "(:Person)-[:ACTED_IN]->(:Movie)", "(:Person)-[:DIRECTED]->(:Movie)", "(:Person)-[:PRODUCED]->(:Movie)", "(:Person)-[:WROTE]->(:Movie)", "(:Person)-[:REVIEWED]->(:Movie)"
+    schema = '''"(:Person)-[:ACTED_IN]->(:Movie)", 
+            "(:Person)-[:DIRECTED]->(:Movie)", 
+            "(:Person)-[:PRODUCED]->(:Movie)", 
+            "(:Person)-[:WROTE]->(:Movie)", 
+            "(:Person)-[:REVIEWED]->(:Movie)", 
+            "(:Person)-[:FOLLOWS]->(:Person)"'''
 
     examples = """
     Example Queries:
